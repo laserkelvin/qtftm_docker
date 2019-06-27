@@ -27,6 +27,9 @@ docker build -t qtftm . | tee build.log
 The `-t` flag will name the image `qtftm`, and the `tee` call will just send
 all of the building output to file if anything should go wrong.
 
+You should then be able to run the program by executing the `start_qtftm.sh`
+script.
+
 ### The meaty steps
 
 Now we have to incorporate machine/spectrometer settings.
