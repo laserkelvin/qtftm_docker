@@ -8,17 +8,17 @@
 # as QtFTM is exited
 # The --rm flag will remove the container after it is stopped
 
-#ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+# This sets up the DISPLAY properly
+export IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+xhost + $IP
 
 docker run \
     --rm \
     --privileged \
-    -e DISPLAY=docker.for.mac.host.internal:0 \
+    -e DISPLAY=$IP:0 \
     -e LD_LIBRARY_PATH=/usr/local/qwt6/lib \
-    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-    -v /home/data:/home/data:rw \
-    -v /dev:/dev \
-    # This is the container qtftm
     qtftm \
-    # This is the binary qtftm
     qtftm
+    #-v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+    #-v /home/data:/home/data:rw \
+    #-v /dev:/dev \

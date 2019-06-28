@@ -53,5 +53,10 @@ COPY config.pri /tmp/qtftm/config.pri
 RUN cd /tmp/qtftm && \
     qmake QtFTM.pro && \
     make -j4; exit 0
+# Miscellanous file stuff
 RUN ln -s /tmp/qtftm/qtftm /usr/local/bin/qtftm
+RUN mkdir -p /home/data/QtFTM
+RUN mkdir -p /home/data/CrabtreeLab
+# Run QtFTM
+CMD /usr/local/bin/qtftm
 
