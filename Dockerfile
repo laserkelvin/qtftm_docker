@@ -41,6 +41,7 @@ RUN cd /tmp && \
     # This is a funky overwrite of the install prefix, which is hardcoded
     # this will install qwt6 to /usr/local/qwt6
     sed -i 's/-$$QWT_VERSION-svn/6/g' qwtconfig.pri && \
+    sed -i 's/QWT_CONFIG     += QwtDesigner/#QWT_CONFIG     += QwtDesigner/g' qwtconfig.pri && \
     qmake qwt.pro && \
     make -j4 && \
     make install && \
